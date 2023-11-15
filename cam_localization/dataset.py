@@ -55,7 +55,7 @@ class EndoscopicDataset(Dataset):
             else: 
                 res_imgs.append(cv.imread(str(filename)))
                 res_cam_diffs.append(winner[1:])
-            i += 1
+                i += 1
         return res_imgs, res_cam_diffs
 
     def __len__(self):
@@ -76,8 +76,8 @@ class EndoscopicDataset(Dataset):
         negative_imgs, negative_cam_diffs = self._sample(negative_candidates, self.num_negative_samples)
 
         if self.rendered_transforms:
-            positive = self.rendered_transforms(positive)
-            negative_samples = [self.rendered_transforms(x) for x in negative_samples]
+            positive_img = self.rendered_transforms(positive_img)
+            negative_imgs = [self.rendered_transforms(x) for x in negative_imgs]
         if self.styletransfer_transforms:
             anchor_img = self.styletransfer_transforms(anchor_img)
 
