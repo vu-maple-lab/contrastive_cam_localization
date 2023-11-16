@@ -82,3 +82,4 @@ class EndoscopicDataset(Dataset):
             anchor_img = self.styletransfer_transforms(anchor_img)
 
         return anchor_img, positive_img, torch.Tensor(positive_cam_diff), negative_imgs, torch.Tensor(negative_cam_diffs)
+    
